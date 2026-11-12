@@ -1,0 +1,23 @@
+{
+  "delay": 5,
+  "rows": [
+    {
+      "invoice": "SYN-1",
+      "vendor": "V1",
+      "currency": "CNY",
+      "amount": "12.345"
+    },
+    {
+      "invoice": "SYN-1",
+      "vendor": "V1",
+      "currency": "CNY",
+      "amount": "12.345"
+    },
+    {
+      "invoice": "SYN-2",
+      "vendor": "V2",
+      "currency": "JPY",
+      "amount": "101.5"
+    }
+  ]
+}
