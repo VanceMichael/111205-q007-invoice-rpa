@@ -1,0 +1,47 @@
+{
+  "invoice": "SYN-LINES-1",
+  "currency": "CNY",
+  "rounding": "per-line-half-even",
+  "rows": [
+    {
+      "line": "L1",
+      "sku": "A",
+      "quantity": "3",
+      "unit_price": "0.335",
+      "tax_rate": "0.13",
+      "tax_included": false
+    },
+    {
+      "line": "L2",
+      "sku": "B",
+      "quantity": "2",
+      "unit_price": "12.45",
+      "tax_rate": "0.09",
+      "tax_included": true
+    },
+    {
+      "line": "D1",
+      "discount_for": [
+        "L1"
+      ],
+      "amount": "-0.01"
+    },
+    {
+      "line": "C1",
+      "corrects": "L2",
+      "quantity": "-1",
+      "unit_price": "12.45",
+      "tax_rate": "0.09",
+      "tax_included": true
+    }
+  ],
+  "protected_fields": {
+    "L2": [
+      "remark"
+    ]
+  },
+  "manual_edit": {
+    "line": "L2",
+    "remark": "manual-review"
+  }
+}
