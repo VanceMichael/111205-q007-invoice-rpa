@@ -1,0 +1,133 @@
+{
+  "invoices": [
+    {
+      "invoice": "SYN-CNY-1",
+      "vendor": "V-CNY",
+      "currency": "CNY",
+      "rounding": "per-line-half-even",
+      "rows": [
+        {
+          "line": "L1",
+          "sku": "A",
+          "quantity": "3",
+          "unit_price": "0.335",
+          "tax_rate": "0.13",
+          "tax_included": false
+        },
+        {
+          "line": "L2",
+          "sku": "B",
+          "quantity": "2",
+          "unit_price": "12.45",
+          "tax_rate": "0.09",
+          "tax_included": true
+        },
+        {
+          "line": "L3",
+          "sku": "C",
+          "quantity": "5",
+          "unit_price": "4.20",
+          "tax_rate": "0.06",
+          "tax_included": false
+        },
+        {
+          "line": "D1",
+          "discount_for": ["L1", "L2"],
+          "amount": "-1.25"
+        },
+        {
+          "line": "C1",
+          "corrects": "L2",
+          "quantity": "-1",
+          "unit_price": "12.45",
+          "tax_rate": "0.09",
+          "tax_included": true
+        }
+      ],
+      "protected_fields": {
+        "L2": ["remark"]
+      }
+    },
+    {
+      "invoice": "SYN-JPY-1",
+      "vendor": "V-JPY",
+      "currency": "JPY",
+      "rounding": "per-line-half-even",
+      "rows": [
+        {
+          "line": "J1",
+          "sku": "G",
+          "quantity": "3",
+          "unit_price": "335",
+          "tax_rate": "0.1",
+          "tax_included": false
+        },
+        {
+          "line": "J2",
+          "sku": "H",
+          "quantity": "1",
+          "unit_price": "1005",
+          "tax_rate": "0.08",
+          "tax_included": true
+        },
+        {
+          "line": "JD1",
+          "discount_for": ["J2"],
+          "amount": "-5"
+        }
+      ],
+      "protected_fields": {
+        "J2": ["remark"]
+      }
+    },
+    {
+      "invoice": "SYN-USD-1",
+      "vendor": "V-USD",
+      "currency": "USD",
+      "rounding": "per-line-half-even",
+      "rows": [
+        {
+          "line": "U1",
+          "sku": "P",
+          "quantity": "4",
+          "unit_price": "1.125",
+          "tax_rate": "0.0825",
+          "tax_included": false
+        },
+        {
+          "line": "U2",
+          "sku": "Q",
+          "quantity": "1",
+          "unit_price": "20.00",
+          "tax_rate": "0.0825",
+          "tax_included": true
+        },
+        {
+          "line": "UD1",
+          "discount_for": ["U1"],
+          "amount": "-0.07"
+        }
+      ],
+      "protected_fields": {
+        "U2": ["remark"]
+      }
+    }
+  ],
+  "portal_scenarios": [
+    {
+      "invoice": "SYN-CNY-1",
+      "manual_edits": [
+        {"reference": "L2", "field": "remark", "value": "manual-review"}
+      ],
+      "confirmed": ["L2"]
+    },
+    {
+      "invoice": "SYN-JPY-1",
+      "manual_edits": [
+        {"reference": "J1", "field": "remark", "value": "check-qty"}
+      ],
+      "inserted_lines": ["HUMAN-1"],
+      "post_read_edit": {"reference": "J1", "field": "remark", "value": "check-qty-final"}
+    }
+  ]
+}
